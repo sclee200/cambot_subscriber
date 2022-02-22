@@ -15,7 +15,7 @@ class ImgSubscriber(Node):
         super().__init__('img_sub_scriber')
         self.subscription = self.create_subscription(
             CompressedImage,
-            'cambot',
+            'botcam',
             self.listener_callback,
             10)
         self.subscription  
@@ -34,7 +34,7 @@ class ImgSubscriber(Node):
     def listener_callback(self, msg):
         bridge = CvBridge()
         get_image = bridge.compressed_imgmsg_to_cv2(msg)
-        get_image = cv.rotate(get_image,cv.ROTATE_180)
+        # get_image = cv.rotate(get_image,cv.ROTATE_180)
         # now = time.time()
         # cv.imwrite(f'./bot_camera_gather/rapa{str(now)}.jpg', get_image)
         # get_text = pytesseract.image_to_string(get_image)
